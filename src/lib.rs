@@ -1,6 +1,8 @@
-//! `phone_trie` — store phone numbers in a trie and export them as PlantUML.
+//! `phone_trie` â€” store phone numbers in a trie and export them as PlantUML.
+
 #![forbid(unsafe_code)]
 
 pub mod contact;
 pub mod loader;
+pub mod plantuml;
 pub mod trie;
