@@ -82,8 +82,8 @@ fn main() {
 
     let trie = PhoneTrie::from_contacts(contacts);
 
-    if let Some(prefix) = config.search {
-        let matches = trie.search(&prefix);
+    if let Some(ref prefix) = config.search {
+        let matches = trie.search(prefix);
         if matches.is_empty() {
             println!("No contacts found for prefix '{prefix}'");
         } else {
@@ -95,8 +95,8 @@ fn main() {
 
     if config.diagram || config.export.is_some() {
         let diagram = trie.to_plantuml();
-        if let Some(path) = config.export {
-            if let Err(err) = fs::write(&path, diagram) {
+        if let Some(ref path) = config.export {
+            if let Err(err) = fs::write(path, diagram) {
                 eprintln!("failed to export diagram: {err}");
                 std::process::exit(1);
             }
