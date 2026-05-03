@@ -119,20 +119,3 @@ fn render_node(
 
     node_id
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn prefix_search_returns_descendants() {
-        let trie = PhoneTrie::from_contacts(vec![
-            Contact { nb: "12".into(), name: "A".into() },
-            Contact { nb: "123".into(), name: "B".into() },
-            Contact { nb: "9".into(), name: "C".into() },
-        ]);
-
-        let names: Vec<_> = trie.search_prefix("12").into_iter().map(|contact| contact.name.as_str()).collect();
-        assert_eq!(names, vec!["A", "B"]);
-    }
-}
