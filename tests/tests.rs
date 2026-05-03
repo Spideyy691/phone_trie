@@ -16,7 +16,7 @@ fn loader_fails_on_missing_file() {
     let result = loader::load_contacts("data/does_not_exist.json");
     assert!(result.is_err());
 }
-// ===== Membre C : plantuml =====
+// ===== C : plantuml =====
 use phone_trie::{plantuml, trie::Trie, contact::Contact};
 
 #[test]
@@ -36,4 +36,22 @@ fn mindmap_indentation_matches_depth() {
     assert!(out.contains("** 1\n"));
     assert!(out.contains("*** 2\n"));
     assert!(out.contains("**** Urgences\n"));
+}
+// ===== Adam F: end-to-end =====
+
+#[test]
+fn full_pipeline() {
+    let contacts = loader::load_contacts("data/04_common_parts.json").unwrap();
+    let mut trie = Trie::new();
+    trie.insert_all(&contacts);
+    let mindmap = plantuml::trie_to_mindmap(trie.root());
+
+    // Each contact name must appear in the diagram.
+    for c in &contacts {
+        assert!(mindmap.contains(&c.name),
+            "expected name '{}' in mindmap output", c.name);
+    }
+    // The shared prefix "0412" produces these specific lines.
+    assert!(mindmap.contains("* 0\n"));
+    assert!(mindmap.contains("**** 2\n"));
 }
