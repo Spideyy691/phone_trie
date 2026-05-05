@@ -10,6 +10,7 @@ Stocke des numéros de téléphone dans un trie (prefix tree) implémenté
 - Alexis — export PlantUML (plantuml.rs)
 - Adam  — CLI, intégration & doc (lib.rs, main.rs, README)
 
+Note: Nous avons utilisé Claude AI pour mettre en place ce projet rust.
 ## Prérequis
 
 - Rust stable (>= 1.75) et Cargo.
@@ -37,10 +38,6 @@ cargo fmt --check
 docker pull plantuml/plantuml-server:jetty
 docker run -d -p 8080:8080 plantuml/plantuml-server:jetty
 ```
-
-Ouvrir http://localhost:8080/ et coller le contenu de
-graph/04_common_parts.puml pour voir le diagramme.
-
 ## Structure du projet
 
 ```
