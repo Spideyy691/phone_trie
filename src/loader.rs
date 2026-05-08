@@ -1,10 +1,10 @@
-//! Read the contact list from a JSON file.
+//! Lecture de la liste de contacts depuis un fichier JSON.
 use std::fs::File;
 use std::io::BufReader;
 use std::path::Path;
 use crate::contact::Contact;
 
-/// Deserialise the JSON file at `path` into a `Vec<Contact>`.
+/// Désérialise le fichier JSON
 pub fn load_contacts<P: AsRef<Path>>(path: P) -> std::io::Result<Vec<Contact>> {
     let file = File::open(path)?;
     let reader = BufReader::new(file);

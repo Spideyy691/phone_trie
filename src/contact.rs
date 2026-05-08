@@ -1,11 +1,11 @@
-//! Contact entry deserialised from the input JSON file.
+//! Entrée contact désérialisée depuis le fichier JSON.
 use serde::Deserialize;
 
-/// A phone number associated with a name.
+/// Un numéro de téléphone associé à un nom.
 #[derive(Debug, Deserialize, Clone, PartialEq, Eq)]
 pub struct Contact {
-    /// Phone number (digits only, no international prefix).
+    /// Numéro de téléphone (chiffres uniquement, sans préfixe international).
     pub nb: String,
-    /// Display name.
+    /// Nom d'affichage.
     pub name: String,
 }
